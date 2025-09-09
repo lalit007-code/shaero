@@ -3,7 +3,7 @@ import { styles } from "@/styles/auth.styles";
 import { useSSO } from "@clerk/clerk-expo";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
-import React from "react";
+
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 export default function login() {
