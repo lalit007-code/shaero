@@ -6,7 +6,7 @@ import { useRouter } from "expo-router";
 
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
-export default function login() {
+export default function Login() {
   const { startSSOFlow } = useSSO();
   const router = useRouter();
   const handleGoogleSignin = async () => {
