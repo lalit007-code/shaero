@@ -19,8 +19,8 @@ export default defineSchema({
     imageUrl: v.string(),
     storageId: v.id("_storage"), //will be needed when we want to delete the post
     caption: v.optional(v.string()),
-    likes: v.string(),
-    comments: v.string(),
+    likes: v.number(),
+    comments: v.number(),
   }).index("by_user", ["userId"]),
 
   likes: defineTable({
