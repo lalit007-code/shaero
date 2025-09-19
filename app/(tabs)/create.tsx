@@ -39,11 +39,9 @@ export default function Create() {
       quality: 0.8,
     });
 
-    console.log(result);
     if (!result.canceled) {
       setSelectedImage(result.assets[0].uri);
     }
-    console.log(selectedImage);
   };
 
   const handleShare = async () => {
@@ -65,22 +63,18 @@ export default function Create() {
 
       const { storageId } = JSON.parse(uploadResult.body);
 
-      console.log(storageId);
-      console.log("before post");
-
-      
       const postCreated = await createPost({ storageId, caption });
-      
-      console.log("after post");
-      console.log(postCreated);
 
       if (!postCreated) {
         console.log("post creation error");
         throw new Error("posr creation error");
       }
+      setSelectedImage(null);
+      setCaption("");
+
       router.push("/(tabs)");
     } catch (error) {
-      console.error("error sharing post");
+      console.error("error sharing post", error);
     } finally {
       setIsSharing(false);
     }
@@ -187,7 +181,7 @@ export default function Create() {
                 placeholderTextColor={COLORS.grey}
                 multiline
                 value={caption}
-                onChange={() => setCaption}
+                onChangeText={(newText) => setCaption(newText)}
                 editable={!isSharing}
               ></TextInput>
             </View>
